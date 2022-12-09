@@ -220,7 +220,7 @@ with tab1:
         )
     location_radio = st.radio('Eingang', names.keys(), horizontal=True)
     fig = update_plots_tab1(day_input.strftime('%Y-%m-%d'), location_radio)
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, theme="streamlit")
 
 with tab2:
     st.markdown('Analysieren Sie hier die Daten, mit denen der Prognosealgorithmus trainiert wurde')
@@ -228,10 +228,10 @@ with tab2:
     time_group = st.radio('Zeitliche Gruppierung', freq_dict.keys(), horizontal=True)
     agg_value = st.radio('Aggregation', agg_dict.keys(), horizontal=True)
     st.plotly_chart(
-        plot_time_group(resource_api[resource], freq_dict[time_group], agg_dict[agg_value])
+        plot_time_group(resource_api[resource], freq_dict[time_group], agg_dict[agg_value]), theme="streamlit",
         )
     st.plotly_chart(
-        plot_name_group(resource_api[resource], agg_dict[agg_value])
+        plot_name_group(resource_api[resource], agg_dict[agg_value]), theme="streamlit",
         )
 
 
